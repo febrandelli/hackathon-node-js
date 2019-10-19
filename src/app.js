@@ -229,13 +229,14 @@ const server = app.listen(3000, () => {
             let descricao = frase.substring((frase.indexOf(':') + 3),[frase.indexOf('*')]);
             let part = frase.substring(frase.indexOf('*')+1)
             let nomes = part.split('*')
-            
+            console.log(empresa.trim(),categoria.trim(),dia,hora,descricao.trim(),nomes)
             
             DbService.inserirEmpresa(empresa);
             dia = '1999/05/02';
+            let id_empresa = 1
             DbService.inserirEventos(categoria,dia,hora,descricao,id_empresa)
             
-            console.log(empresa.trim(),categoria.trim(),dia,hora,descricao.trim(),nomes)
+            
           }
           
           

@@ -66,9 +66,9 @@ const server = app.listen(3000, () => {
   DbService.conectar({
     host: 'localhost', 
     porta: 3306, 
-    banco: 'pet_shop', 
-    usuario: 'aplicacao', 
-    senha: 'senhaaplicacao'
+    banco: 'hackathon', 
+    usuario: 'root', 
+    senha: '123456'
   })
     .catch(erro => {
       console.log('Devido erro ao conectar com o banco de dados a aplicação será encerrada');

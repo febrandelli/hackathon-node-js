@@ -181,7 +181,7 @@ const server = app.listen(3000, () => {
   DbService.conectar({
     host: 'localhost', 
     porta: 3306, 
-    banco: 'pet_shop', 
+    banco: 'hackathon', 
     usuario: 'root', 
     senha: '123456'
   })
@@ -218,6 +218,32 @@ const server = app.listen(3000, () => {
               ]
             }
           */
+          for (let i = 0; i < tweets.length;i++){
+            let frase = tweets[i].texto;
+            let fraseArray = frase.split(' ');           
+            let empresa = fraseArray[1];
+            let pri = frase.indexOf(' ');
+            let categoria = frase.substring((frase.indexOf(' ',pri+1) + 1),[frase.indexOf('/') - 3]);
+            let dia = frase.substring((frase.indexOf('/') -3),[frase.indexOf('/') +8]);;
+            let hora = frase.substring((frase.indexOf(':') - 3),[frase.indexOf(':') + 3]);
+            let descricao = frase.substring((frase.indexOf(':') + 3),[frase.indexOf('*')]);
+            let part = frase.substring(frase.indexOf('*')+1)
+            let nomes = part.split('*')
+            
+            
+            DbService.inserirEmpresa(empresa);
+            dia = '1999/05/02';
+            DbService.inserirEventos(categoria,dia,hora,descricao,id_empresa)
+            
+            console.log(empresa.trim(),categoria.trim(),dia,hora,descricao.trim(),nomes)
+          }
+          
+          
+
+
+
+        
+
         })
         .catch(erro => {
           console.error('Erro ao listar Tweets da Hit-BRA:', erro);
